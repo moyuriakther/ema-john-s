@@ -1,0 +1,19 @@
+nav {
+  background-color: #1c2b35;
+  height: 80px;
+  padding: 0px 112px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header a {
+  color: #ffffff;
+  text-decoration: none;
+  padding-left: 32px;
+  font-size: 17px;
+}
+.header a:hover {
+  color: tomato;
+}

@@ -1,0 +1,18 @@
+.cart .clear-cart,
+.cart .review {
+  background-color: #ff3030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart .clear-cart .button-text,
+.cart .review .button-text {
+  padding-right: 10px;
+}
+.cart .clear-cart p,
+.cart .review p {
+  margin: 0px;
+}
+.cart .review {
+  background-color: #ff9900;
+}
