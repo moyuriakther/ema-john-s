@@ -2,32 +2,48 @@ import React from "react";
 import "./Cart.css";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { deleteShoppingCart } from "../../utilities/fakedb";
 
-const Cart = ({ cart }) => {
+const Cart = (props) => {
+  const { cart } = props;
+  let total = 0;
+  let shipping = 0;
+  let quantity = 0;
+  for (const product of cart) {
+    if (product.quantity < 1) {
+      product.quantity = 1;
+    }
+    quantity = quantity + product.quantity;
+    total = total + product.price * product.quantity;
+    shipping = shipping + product.shipping;
+  }
+  const tax = Math.round(parseFloat((total * 0.1).toFixed(2)));
+  const grandTotal = total + shipping + tax;
+  const handleClear = () => {
+    deleteShoppingCart();
+  };
   return (
     <div className="cart">
       <h4 className="my-3 text-center">Order Summary</h4>
-      <p>Selected Items:{cart.length}</p>
-      <p>Total Price:{cart.length}</p>
-      <p>Total Shipping Charge:{cart.length}</p>
-      <p>Tax:{cart.length}</p>
+      <p>Selected Items:{quantity}</p>
+      <p>Total Price:{total}</p>
+      <p>Total Shipping Charge:{shipping}</p>
+      <p>Tax:{tax}</p>
       <strong>
-        <p>Grand Total:{cart.length}</p>
+        <p>Grand Total:{grandTotal}</p>
       </strong>
-      <Button className="form-control clear-cart my-3" variant="primary">
+      <Button
+        onClick={handleClear}
+        className="form-control clear-cart my-3"
+        variant="primary"
+      >
         <p className="button-text">Clear Cart</p>
         <p>
           <FontAwesomeIcon icon={faTrashCan} />
         </p>
       </Button>
-      <Button className="form-control review" variant="primary">
-        <p className="button-text">Review Order</p>
-        <p>
-          {" "}
-          <FontAwesomeIcon icon={faArrowRight} />
-        </p>
-      </Button>
+      {props.children}
     </div>
   );
 };

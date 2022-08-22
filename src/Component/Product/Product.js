@@ -6,7 +6,7 @@ import "./Product.css";
 
 const Product = (props) => {
   const { handleAddProduct, product } = props;
-  const { img, id, name, seller, price, ratings } = product;
+  const { img, name, seller, price, ratings } = product;
   return (
     <div className="product">
       <Card className="product-card" style={{ width: "18rem" }}>
@@ -18,7 +18,7 @@ const Product = (props) => {
           <Card.Text>Manufacturer: {seller}</Card.Text>
           <Card.Text>Ratings: {ratings}</Card.Text>
           <Button
-            onClick={() => handleAddProduct(id)}
+            onClick={() => handleAddProduct(product)}
             className="form-control btn d-flex justify-content-center align-items-center mt-2"
             variant="primary"
           >
