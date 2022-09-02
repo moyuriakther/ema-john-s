@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { deleteShoppingCart } from "../../utilities/fakedb";
+import { useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
   const { cart } = props;
@@ -20,8 +21,10 @@ const Cart = (props) => {
   }
   const tax = Math.round(parseFloat((total * 0.1).toFixed(2)));
   const grandTotal = total + shipping + tax;
+  const navigate = useNavigate();
   const handleClear = () => {
     deleteShoppingCart();
+    navigate("/");
   };
   return (
     <div className="cart">

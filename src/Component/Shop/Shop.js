@@ -28,9 +28,16 @@ const Shop = () => {
   //   setCart(savedCart);
   // }, [products]);
   const handleAddProduct = (product) => {
-    const newCart = [...cart, product];
-    setCart(newCart);
-    addToDb(product.id);
+    const exists = cart.find((pd) => pd.id === product.id);
+    if (!exists) {
+      const newCart = [...cart, product];
+      setCart(newCart);
+      addToDb(product.id);
+      console.log(cart, newCart);
+    } else {
+      alert("already added");
+      console.log(cart);
+    }
   };
   return (
     <div className="shop-container">
