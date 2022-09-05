@@ -34,10 +34,10 @@ const Orders = () => {
         <div className="cart-container p-3">
           {cart && (
             <Cart cart={cart}>
-              <Link to="/inventory">
+              <Link to="/shipment">
                 {" "}
                 <Button className="form-control review" variant="primary">
-                  <p className="button-text">Prosed Checkout</p>
+                  <p className="button-text">Shipment</p>
                   <p>
                     {" "}
                     <FontAwesomeIcon icon={faArrowRight} />

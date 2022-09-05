@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import google from "../../images/google.png";
 import {
@@ -14,7 +14,10 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, error] =
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
@@ -28,7 +31,7 @@ const Login = () => {
     }
   };
   if (user) {
-    navigate("/inventory");
+    navigate(from, { replace: true });
   }
   console.log(user);
   return (
