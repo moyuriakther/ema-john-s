@@ -13,7 +13,7 @@ const Header = () => {
       console.log("sign out success");
     });
   };
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       <nav className="header">

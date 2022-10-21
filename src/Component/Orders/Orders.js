@@ -11,13 +11,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Orders = () => {
-  const [products] = useProducts();
-  const [cart, setCart] = useCart(products);
-
+  // const [products] = useProducts();
+  const [cart, setCart] = useCart();
+  console.log(cart);
   const handleRemoveItem = (product) => {
-    const newCart = cart.filter((pd) => pd.id !== product.id);
+    console.log(product, cart);
+    const newCart = cart.filter((pd) => pd._id !== product._id);
     setCart(newCart);
-    removeFromDb(product.id);
+    removeFromDb(product._id);
   };
   return (
     <div className="container">
@@ -27,7 +28,7 @@ const Orders = () => {
             <ReviewOrders
               product={product}
               handleRemoveItem={handleRemoveItem}
-              key={product.id}
+              key={product._id}
             />
           ))}
         </div>

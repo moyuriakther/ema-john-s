@@ -12,3 +12,15 @@
 .cart-container {
   background-color: #ffe0b3;
 }
+.pagination button,
+.pagination select {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #ffe0b3;
+  border-radius: 5px;
+  background: white;
+}
+.pagination .selected {
+  background: #ffe0b3;
+  color: #fff;
+}

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
   const { cart } = props;
+  // console.log(cart);
   let total = 0;
   let shipping = 0;
   let quantity = 0;
